@@ -13,7 +13,7 @@ ENV LUAJIT_INC /usr/include/luajit-2.0/
 # Based on http://git.alpinelinux.org/cgit/aports/tree/main/nginx-initscripts/nginx-initscripts.pre-install
 RUN addgroup -S -g 82 www-data && \
     addgroup -S nginx && \
-    adduser -S -D -H -h /var/www/localhost/htdocs -s /sbin/nologin -G nginx -g nginx nginx && \
+    adduser -S -D -H -h /var/www -s /sbin/nologin -G nginx -g nginx nginx && \
     addgroup nginx www-data
 
 # Install packages
