@@ -1,0 +1,40 @@
+language: python
+
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - DOCKER_COMPOSE_VERSION=1.10.0
+    - LATEST_VERSION=4
+  matrix:
+    - WORDPRESS=4 NGINX=1.10
+
+install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+script:
+  - cd ./$WORDPRESS/$NGINX
+  - make && make test
+
+after_success: |
+  if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ([ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]); then
+    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    make release
+
+    if [ -n "$TRAVIS_TAG" ]; then
+      make VERSION="$WORDPRESS-$NGINX-$TRAVIS_TAG" release
+    fi
+
+    if [ "$WORDPRESS" == "$LATEST_VERSION" ]; then
+      make VERSION=latest release
+    fi
+  fi
+
+after_failure:
+  - make logs

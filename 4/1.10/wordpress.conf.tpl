@@ -1,8 +1,8 @@
 server {
-    server_name SERVER_NAME;
+    server_name {{ getenv "NGINX_SERVER_NAME" "wordpress" }};
     listen 80;
 
-    root /var/www/html/;
+    root {{ getenv "NGINX_SERVER_ROOT" "/var/www/html/" }};
     index index.php;
 
     fastcgi_keep_conn on;
@@ -80,7 +80,7 @@ server {
 
         include fastcgi.conf;
         fastcgi_index index.php;
-        fastcgi_pass upstream;
+        fastcgi_pass backend;
         track_uploads uploads 60s;
     }
 }
