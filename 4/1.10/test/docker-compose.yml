@@ -7,8 +7,6 @@ services:
       NGINX_BACKEND_HOST: wordpress
     depends_on:
       - wordpress
-    ports:
-      - 8080:80
     volumes:
       - codebase:/var/www/html
   wordpress:
