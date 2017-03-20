@@ -8,7 +8,8 @@ services:
 env:
   global:
     - DOCKER_COMPOSE_VERSION=1.10.0
-    - LATEST_VERSION=4
+    - LATEST_WORDPRESS=4
+    - LATEST_NGINX=1.10
   matrix:
     - WORDPRESS=4 NGINX=1.10
 
@@ -31,7 +32,7 @@ after_success: |
       make VERSION="$WORDPRESS-$NGINX-$TRAVIS_TAG" release
     fi
 
-    if [ "$WORDPRESS" == "$LATEST_VERSION" ]; then
+    if [ "$WORDPRESS" == "$LATEST_WORDPRESS" && "$NGINX" == "$LATEST_NGINX" ]; then
       make VERSION=latest release
     fi
   fi
