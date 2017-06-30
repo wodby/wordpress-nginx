@@ -9,9 +9,10 @@ env:
   global:
     - DOCKER_COMPOSE_VERSION=1.10.0
     - LATEST_WORDPRESS=4
-    - LATEST_NGINX=1.10
+    - LATEST_NGINX=1.13
   matrix:
-    - WORDPRESS=4 NGINX=1.10
+    - WORDPRESS=4 NGINX=1.13
+    - WORDPRESS=4 NGINX=1.12
 
 install:
   - sudo rm /usr/local/bin/docker-compose

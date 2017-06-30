@@ -1,9 +1,9 @@
 -include env_make
 
-VERSION ?= 4-1.10
+VERSION ?= 4-1.12
 
 REPO = wodby/wordpress-nginx
-NAME = wordpress-nginx-4-1.10
+NAME = wordpress-4-nginx-1.12
 
 .PHONY: build test push shell run start stop logs clean release
 

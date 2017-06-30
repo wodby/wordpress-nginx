@@ -3,7 +3,7 @@
 set -e
 
 if [[ -n "${DEBUG}" ]]; then
-  set -x
+    set -x
 fi
 
 chown www-data:www-data "${WODBY_DIR_FILES}"
