@@ -7,23 +7,23 @@
 
 ## Docker Images
 
-Images are built via [Travis CI](https://travis-ci.org/wodby/wordpress-nginx) and published on [Docker Hub](https://hub.docker.com/r/wodby/wordpress-nginx). 
+Images are based on [wodby/nginx](https://github.com/wodby/nginx), built via [Travis CI](https://travis-ci.org/wodby/wordpress-nginx) and published on [Docker Hub](https://hub.docker.com/r/wodby/wordpress-nginx). 
 
 ## Versions
 
-| Image Tag | WordPress | Nginx | Alpine |
-| --------- | --------- | ----- | ------ |
-| [4-1.13](https://github.com/wodby/wordpress-nginx/tree/master/4/1.13/Dockerfile) | 4 | 1.13 | 3.6 |  
-| [4-1.12](https://github.com/wodby/wordpress-nginx/tree/master/4/1.12/Dockerfile) | 4 | 1.12 | 3.6 |  
+| Image Tag                                                                        | WordPress | Nginx | Alpine |
+| -------------------------------------------------------------------------------- | --------- | ----- | ------ |
+| [4-1.13](https://github.com/wodby/wordpress-nginx/tree/master/4/1.13/Dockerfile) | 4.x       | 1.13  | 3.6    |
+| [4-1.12](https://github.com/wodby/wordpress-nginx/tree/master/4/1.12/Dockerfile) | 4.x       | 1.12  | 3.6    |
 
 ## Environment Variables
 
-See at [wodby/nginx](https://github.com/wodby/nginx)
+See more at [wodby/nginx](https://github.com/wodby/nginx)
 
-| Variable | Default Value | Description |
-| -------- | ------------- | ----------- |
-| NGINX_SERVER_NAME | wordpress     | |
-| NGINX_SERVER_ROOT | /var/www/html | |
+| Variable          | Default Value | Description |
+| ----------------- | ------------- | ----------- |
+| NGINX_SERVER_NAME | wordpress     |             |
+| NGINX_SERVER_ROOT | /var/www/html |             |
 
 ## Complete WordPress Stack
 
