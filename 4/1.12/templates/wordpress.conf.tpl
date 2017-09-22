@@ -1,3 +1,13 @@
+upstream php {
+    server {{ getenv "NGINX_BACKEND_HOST" }}:9000;
+}
+
+map $http_x_forwarded_proto $fastcgi_https {
+    default $https;
+    http '';
+    https on;
+}
+
 server {
     server_name {{ getenv "NGINX_SERVER_NAME" "wordpress" }};
     listen 80;
@@ -5,11 +15,14 @@ server {
     root {{ getenv "NGINX_SERVER_ROOT" "/var/www/html/" }};
     index index.php;
 
+    include fastcgi_params;
+
+    fastcgi_buffers {{ getenv "NGINX_FASTCGI_BUFFERS" "16 32k" }};
+    fastcgi_buffer_size {{ getenv "NGINX_FASTCGI_BUFFER_SIZE" "32k" }};
+    fastcgi_intercept_errors {{ getenv "NGINX_FASTCGI_INTERCEPT_ERRORS" "on" }};
+    fastcgi_read_timeout {{ getenv "NGINX_FASTCGI_READ_TIMEOUT" "900" }};
     fastcgi_keep_conn on;
     fastcgi_index index.php;
-    fastcgi_param QUERY_STRING $query_string;
-    fastcgi_param SCRIPT_NAME $fastcgi_script_name;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
     add_header Cache-Control "store, must-revalidate, post-check=0, pre-check=0";
 
@@ -51,7 +64,7 @@ server {
 
     location ~* .*\.(?:m4a|mp4|mov)$ {
         mp4;
-        mp4_buffer_size     1M;
+        mp4_buffer_size 1M;
         mp4_max_buffer_size 5M;
     }
 
@@ -64,12 +77,21 @@ server {
         try_files $uri $uri/ /index.php?$args;
     }
 
+    # Admin for subdir multisite.
+    if (!-e $request_filename) {
+        rewrite /wp-admin$ $scheme://$host$uri/ permanent;
+        rewrite ^/[_0-9a-zA-Z-]+(/wp-.*) $1 last;
+        rewrite ^/[_0-9a-zA-Z-]+(/.*\.php)$ $1 last;
+    }
+
     # Add trailing slash to */wp-admin requests.
     rewrite /wp-admin$ $scheme://$host$uri/ permanent;
 
     # Directives to send expires headers and turn off 404 error logging.
     location ~* ^.+\.(ogg|ogv|svg|svgz|eot|otf|woff|woff2|mp4|ttf|rss|atom|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
-        access_log off; log_not_found off; expires max;
+        access_log off;
+        log_not_found off;
+        expires max;
     }
 
     location ~ [^/]\.php(/|$) {
@@ -78,9 +100,7 @@ server {
             return 404;
         }
 
-        include fastcgi.conf;
-        fastcgi_index index.php;
-        fastcgi_pass backend;
+        fastcgi_pass php;
         track_uploads uploads 60s;
     }
 }
