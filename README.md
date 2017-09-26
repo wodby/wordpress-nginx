@@ -20,10 +20,11 @@ Images are based on [wodby/nginx](https://github.com/wodby/nginx), built via [Tr
 
 See more at [wodby/nginx](https://github.com/wodby/nginx)
 
-| Variable          | Default Value | Description |
-| ----------------- | ------------- | ----------- |
-| NGINX_SERVER_NAME | wordpress     |             |
-| NGINX_SERVER_ROOT | /var/www/html |             |
+| Variable                   | Default Value | Description |
+| -------------------------- | ------------- | ----------- |
+| NGINX_SERVER_NAME          | wordpress     |             |
+| NGINX_SERVER_ROOT          | /var/www/html |             |
+| NGINX_CLIENT_MAX_BODY_SIZE | 256m          |             |
 
 ## Complete WordPress Stack
 
