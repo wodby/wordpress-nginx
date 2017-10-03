@@ -11,10 +11,10 @@ Images are based on [wodby/nginx](https://github.com/wodby/nginx), built via [Tr
 
 ## Versions
 
-| Image Tag                                                                        | WordPress | Nginx | Alpine |
-| -------------------------------------------------------------------------------- | --------- | ----- | ------ |
-| [4-1.13](https://github.com/wodby/wordpress-nginx/tree/master/4/1.13/Dockerfile) | 4.x       | 1.13  | 3.6    |
-| [4-1.12](https://github.com/wodby/wordpress-nginx/tree/master/4/1.12/Dockerfile) | 4.x       | 1.12  | 3.6    |
+| Image Tag                                                                       | WordPress | Nginx | Alpine |
+| ------------------------------------------------------------------------------- | --------- | ----- | ------ |
+| [4-1.13](https://github.com/wodby/wordpress-nginx/tree/master/4/1.x/Dockerfile) | 4.x       | 1.13  | 3.6    |
+| [4-1.12](https://github.com/wodby/wordpress-nginx/tree/master/4/1.x/Dockerfile) | 4.x       | 1.12  | 3.6    |
 
 ## Environment Variables
 
