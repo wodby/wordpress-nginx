@@ -15,14 +15,7 @@ server {
     root {{ getenv "NGINX_SERVER_ROOT" "/var/www/html/" }};
     index index.php;
 
-    include fastcgi_params;
-
-    fastcgi_buffers {{ getenv "NGINX_FASTCGI_BUFFERS" "16 32k" }};
-    fastcgi_buffer_size {{ getenv "NGINX_FASTCGI_BUFFER_SIZE" "32k" }};
-    fastcgi_intercept_errors {{ getenv "NGINX_FASTCGI_INTERCEPT_ERRORS" "on" }};
-    fastcgi_read_timeout {{ getenv "NGINX_FASTCGI_READ_TIMEOUT" "900" }};
-    fastcgi_keep_conn on;
-    fastcgi_index index.php;
+    include fastcgi.conf;
 
     add_header Cache-Control "store, must-revalidate, post-check=0, pre-check=0";
 

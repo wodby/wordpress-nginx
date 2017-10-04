@@ -10,8 +10,8 @@ env:
     - DOCKER_COMPOSE_VERSION=1.10.0
     - DOCKER_VERSION=17.06.2
   matrix:
-    - WORDPRESS=4 LINE=1.x NGINX=1.13
-    - WORDPRESS=4 LINE=1.x NGINX=1.12
+    - WORDPRESS=4 LINE=1.x NGINX_VER=1.13
+    - WORDPRESS=4 LINE=1.x NGINX_VER=1.12
 
 before_install:
   - sudo apt-get update
@@ -33,6 +33,6 @@ after_success: |
     make release
 
     if [ -n "$TRAVIS_TAG" ]; then
-      make VERSION="$WORDPRESS-$NGINX-$TRAVIS_TAG" release
+      make TAG="$WORDPRESS-$NGINX_VER-$TRAVIS_TAG" release
     fi
   fi
