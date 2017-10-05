@@ -7,14 +7,17 @@
 
 ## Docker Images
 
-Images are based on [wodby/php-nginx](https://github.com/wodby/php-nginx), built via [Travis CI](https://travis-ci.org/wodby/wordpress-nginx) and published on [Docker Hub](https://hub.docker.com/r/wodby/wordpress-nginx). 
+* All images are based on Alpine Linux
+* Base image: [wodby/php-nginx](https://github.com/wodby/php-nginx)
+* [Travis CI builds](https://travis-ci.org/wodby/wordpress-nginx) 
+* [Docker Hub](https://hub.docker.com/r/wodby/wordpress-nginx)
 
 ## Versions
 
-| Image Tag (Dockerfile)                                                    | WordPress | Nginx | Alpine |
-| ------------------------------------------------------------------------- | --------- | ----- | ------ |
-| [4-1.13](https://github.com/wodby/wordpress-nginx/tree/master/Dockerfile) | 4.x       | 1.13  | 3.6    |
-| [4-1.12](https://github.com/wodby/wordpress-nginx/tree/master/Dockerfile) | 4.x       | 1.12  | 3.6    |
+| Image tag (Dockerfile)                                                    | WordPress | Nginx | 
+| ------------------------------------------------------------------------- | --------- | ----- | 
+| [4-1.13](https://github.com/wodby/wordpress-nginx/tree/master/Dockerfile) | 4.x       | 1.13  | 
+| [4-1.12](https://github.com/wodby/wordpress-nginx/tree/master/Dockerfile) | 4.x       | 1.12  | 
 
 ## Environment Variables
 
