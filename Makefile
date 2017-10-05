@@ -1,10 +1,11 @@
 -include env_make
 
+WORDPRESS = 4
 NGINX_VER ?= 1.13
-TAG ?= 4-$(NGINX_VER)
+TAG ?= $(WORDPRESS)-$(NGINX_VER)
 
 REPO = wodby/wordpress-nginx
-NAME = wordpress-4-nginx-$(NGINX_VER)
+NAME = wordpress-$(WORDPRESS)-nginx-$(NGINX_VER)
 
 .PHONY: build test push shell run start stop logs clean release
 
