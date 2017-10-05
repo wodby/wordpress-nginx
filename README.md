@@ -12,8 +12,6 @@
 * [Travis CI builds](https://travis-ci.org/wodby/wordpress-nginx) 
 * [Docker Hub](https://hub.docker.com/r/wodby/wordpress-nginx)
 
-## Versions
-
 | Image tag (Dockerfile)                                                    | WordPress | Nginx | 
 | ------------------------------------------------------------------------- | --------- | ----- | 
 | [4-1.13](https://github.com/wodby/wordpress-nginx/tree/master/Dockerfile) | 4.x       | 1.13  | 
