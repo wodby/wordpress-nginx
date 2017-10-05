@@ -12,6 +12,8 @@
 * [Travis CI builds](https://travis-ci.org/wodby/wordpress-nginx) 
 * [Docker Hub](https://hub.docker.com/r/wodby/wordpress-nginx)
 
+For better reliability we release images with stability tags (`wodby/php:4-1.13-X.X.X`) which correspond to git tags. We **strongly recommend** using images only with stability tags. Below listed basic tags:
+
 | Image tag (Dockerfile)                                                    | WordPress | Nginx | 
 | ------------------------------------------------------------------------- | --------- | ----- | 
 | [4-1.13](https://github.com/wodby/wordpress-nginx/tree/master/Dockerfile) | 4.x       | 1.13  | 
