@@ -1,6 +1,6 @@
 -include env_make
 
-WORDPRESS = 4
+WORDPRESS ?= 4
 NGINX_VER ?= 1.13
 TAG ?= $(WORDPRESS)-$(NGINX_VER)
 
