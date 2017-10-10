@@ -4,15 +4,20 @@ WORDPRESS ?= 4
 NGINX_VER ?= 1.13
 TAG ?= $(WORDPRESS)-$(NGINX_VER)
 
+FROM_TAG = $(NGINX_VER)
 REPO = wodby/wordpress-nginx
 NAME = wordpress-$(WORDPRESS)-nginx-$(NGINX_VER)
+
+ifneq ($(FROM_STABILITY_TAG),)
+    FROM_TAG := $(FROM_TAG)-$(FROM_STABILITY_TAG)
+endif
 
 .PHONY: build test push shell run start stop logs clean release
 
 default: build
 
 build:
-	docker build -t $(REPO):$(TAG) --build-arg NGINX_VER=$(NGINX_VER) ./
+	docker build -t $(REPO):$(TAG) --build-arg FROM_TAG=$(FROM_TAG) ./
 
 test:
 	IMAGE=$(REPO):$(TAG) ./test.sh
