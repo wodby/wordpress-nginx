@@ -1,12 +1,12 @@
 -include env_make
 
-WORDPRESS ?= 4
+WORDPRESS_VER ?= 4
 NGINX_VER ?= 1.13
-TAG ?= $(WORDPRESS)-$(NGINX_VER)
+TAG ?= $(WORDPRESS_VER)-$(NGINX_VER)
 
 FROM_TAG = $(NGINX_VER)
 REPO = wodby/wordpress-nginx
-NAME = wordpress-$(WORDPRESS)-nginx-$(NGINX_VER)
+NAME = wordpress-$(WORDPRESS_VER)-nginx-$(NGINX_VER)
 
 ifneq ($(FROM_STABILITY_TAG),)
     FROM_TAG := $(FROM_TAG)-$(FROM_STABILITY_TAG)
