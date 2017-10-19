@@ -23,10 +23,12 @@ For better reliability we release images with stability tags (`wodby/php:4-1.13-
 
 See more at [wodby/php-nginx](https://github.com/wodby/php-nginx)
 
-| Variable                   | Default Value | Description |
-| -------------------------- | ------------- | ----------- |
-| NGINX_SERVER_NAME          | wordpress     |             |
-| NGINX_SERVER_ROOT          | /var/www/html |             |
+| Variable                         | Default Value  | Description |
+| -------------------------------- | -------------- | ----------- |
+| NGINX_BACKEND_HOST               |                |             |
+| NGINX_SERVER_EXTRA_CONF_FILEPATH | /var/www/html/ |             |
+| NGINX_SERVER_NAME                | wordpress      |             |
+| NGINX_SERVER_ROOT                | /var/www/html  |             |
 
 ## Complete WordPress Stack
 
