@@ -15,9 +15,10 @@ server {
     root {{ getenv "NGINX_SERVER_ROOT" "/var/www/html/" }};
     index index.php;
 
-    include fastcgi.conf;
-
     add_header Cache-Control "store, must-revalidate, post-check=0, pre-check=0";
+
+    include fastcgi.conf;
+    include healthz.conf;
 
     location ~* ^/.well-known/ {
         allow all;
@@ -96,4 +97,8 @@ server {
         fastcgi_pass php;
         track_uploads uploads 60s;
     }
+
+{{ if getenv "NGINX_SERVER_EXTRA_CONF_FILEPATH" }}
+    include {{ getenv "NGINX_SERVER_EXTRA_CONF_FILEPATH" }};
+{{ end }}
 }
