@@ -9,11 +9,11 @@ env:
   global:
     - DOCKER_COMPOSE_VERSION=1.10.0
     - DOCKER_VERSION=17.06.2
-    - LATEST_NGINX_VER=1.13
+    - LATEST_TAG=4-1.13
     - FROM_STABILITY_TAG=""
   matrix:
-    - WORDPRESS_VER=4 NGINX_VER=1.13
-    - WORDPRESS_VER=4 NGINX_VER=1.12
+    - WORDPRESS_VER=4 NGINX_VER=1.13 TAG=4-1.13
+    - WORDPRESS_VER=4 NGINX_VER=1.12 TAG=4-1.12
 
 install:
   - sudo apt-get update
@@ -29,11 +29,14 @@ script:
 after_success: |
   if [[ "${TRAVIS_PULL_REQUEST}" == "false" && ("${TRAVIS_BRANCH}" == "master"  || -n "${TRAVIS_TAG}") ]]; then
     docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
-    make release
 
     if [[ -n "${TRAVIS_TAG}" ]]; then
-      make release TAG="${WORDPRESS_VER}-${NGINX_VER}-${TRAVIS_TAG}"
-    elif [[ "${NGINX_VER}" == "${LATEST_NGINX_VER}" ]]; then
+      export STABILITY_TAG="${TRAVIS_TAG}"
+    fi
+
+    make release
+
+    if [[ "${TAG}" == "${LATEST_TAG}" ]]; then
       make release TAG="latest"
     fi
   fi
