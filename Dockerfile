@@ -6,7 +6,7 @@ USER root
 
 RUN rm /etc/gotpl/default-vhost.conf.tpl
 
-USER www-data
+USER wodby
 
 COPY templates /etc/gotpl/
 COPY init /docker-entrypoint-init.d/
