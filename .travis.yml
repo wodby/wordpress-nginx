@@ -10,23 +10,11 @@ env:
     - WORDPRESS_VER=4 NGINX_VER=1.13 TAG=4-1.13
     - WORDPRESS_VER=4 NGINX_VER=1.12 TAG=4-1.12
 
-script: |
-  make
-  make test
+script:
+  - make && make test
 
-  if [[ "${TRAVIS_PULL_REQUEST}" == "false" && ("${TRAVIS_BRANCH}" == "master"  || -n "${TRAVIS_TAG}") ]]; then
-    docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
-
-    if [[ -n "${TRAVIS_TAG}" ]]; then
-      export STABILITY_TAG="${TRAVIS_TAG}"
-    fi
-
-    make release
-
-    if [[ "${TAG}" == "${LATEST_TAG}" ]]; then
-      make release TAG="latest"
-    fi
-  fi
+after_success:
+  - bash "${TRAVIS_BUILD_DIR}/travis-release.sh"
 
 notifications:
   on_failure: never
