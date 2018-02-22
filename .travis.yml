@@ -15,10 +15,4 @@ script:
   - make && make test
 
 after_success:
-  - bash "${TRAVIS_BUILD_DIR}/travis-release.sh"
-
-notifications:
-  on_failure: never
-  slack:
-    secure: |
-      B4j/OnsToxUzrrKy5pHwleNHUZJJvR2eGr1YmLXiBPPrBvErLWhn2O/6uLaBgbSmanGYOYDZ4gydWOO1InzHhlmfYonJ2Wumv677G+vqBkw1liSHo+yr7tc6MscDLLc90caqOifQa+oYSZ15QcqjGqbx3iwIqHNVgr1emt+Y4923vw6yfyrXN3LllpfUQ95rLd3FuwlAIzgrIF3p74RGkWQd2ojaH1GjDc686brp9MnzhT+TX8lxI26vMhO4/iNOOTP+2URiLw0s8ys+iKnHM/YKN69722fV7dVYrAJ0nWrS2M0BonZQ3/sMxl0cAfoHSnAixb9QKD1b/3H0KZMmaFzUE/n82GDBKc59yAAbmvkhuhowrSDzvu/bKfVDhqfPrbMrnxka7CfzhcgRjcgtRl56BVh1N1Kn2m6tsxThvW+SQMn6C9i6TXckT8YQKw14PQCbT0yTQiMAm6umxzldTRUndJI6GNdWwkmBmMaiuQtJdB5e7U7esc83cjQZ6UQNnBtEtwb4rqksrcIz77eXGgF53YnE5l8zU3GX3Dtaou12DayuaBXgpp1rt28U76e8ZsxtKi6/Ko6NuIFMw+lej5piOHjHfivymauvSViC4xTbCFrbE6+FQZkX7ZRGvXFxGFA9Vedl7SzZZ6sfLYHuMkk/IcIC9iFRNAqbVV63c00=
+  - bash "${TRAVIS_BUILD_DIR}/travis_release"
