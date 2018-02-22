@@ -7,7 +7,7 @@ if [[ -n "${DEBUG}" ]]; then
 fi
 
 nginx_exec() {
-    docker-compose -f test/docker-compose.yml exec nginx "${@}"
+    docker-compose exec nginx "${@}"
 }
 
 check_endpoint() {
@@ -15,7 +15,7 @@ check_endpoint() {
     echo "OK"
 }
 
-docker-compose -f test/docker-compose.yml up -d
+docker-compose up -d
 
 nginx_exec make check-ready -f /usr/local/bin/actions.mk
 
@@ -49,4 +49,4 @@ check_endpoint "favicon.ico" "204 No Content"
 echo -n "Checking non-existing php endpoint... "
 check_endpoint "non-existing.php" "404 Not Found"
 
-docker-compose -f test/docker-compose.yml down
+docker-compose down
