@@ -1,7 +1,7 @@
 -include env_make
 
 WORDPRESS_VER ?= 4
-NGINX_VER ?= 1.13
+NGINX_VER ?= 1.14
 TAG ?= $(WORDPRESS_VER)-$(NGINX_VER)
 
 BASE_IMAGE_TAG = $(NGINX_VER)
