@@ -1,7 +1,7 @@
 -include env_make
 
 WORDPRESS_VER ?= 4
-NGINX_VER ?= 1.13
+NGINX_VER ?= 1.14
 TAG ?= $(WORDPRESS_VER)-$(NGINX_VER)
 
 BASE_IMAGE_TAG = $(NGINX_VER)
@@ -26,7 +26,7 @@ build:
 	docker build -t $(REPO):$(TAG) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) ./
 
 test:
-	cd ./test && IMAGE=$(REPO):$(TAG) ./test
+	cd ./test && IMAGE=$(REPO):$(TAG) ./test.sh
 
 push:
 	docker push $(REPO):$(TAG)

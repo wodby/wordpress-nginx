@@ -5,14 +5,13 @@ services:
 
 env:
   global:
-    - LATEST_TAG=4-1.13
-    - BASE_IMAGE_STABILITY_TAG=4.0.3
+    - LATEST_TAG=4-1.14
   matrix:
+    - WORDPRESS_VER=4 NGINX_VER=1.14 TAG=4-1.14 EXTRA_TAG=4
     - WORDPRESS_VER=4 NGINX_VER=1.13 TAG=4-1.13
-    - WORDPRESS_VER=4 NGINX_VER=1.12 TAG=4-1.12
 
 script:
   - make && make test
 
 after_success:
-  - bash "${TRAVIS_BUILD_DIR}/travis_release"
+  - . "${TRAVIS_BUILD_DIR}/release.sh"
