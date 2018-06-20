@@ -4,11 +4,10 @@ services:
   - docker
 
 env:
-  global:
-    - LATEST_TAG=4-1.14
   matrix:
-    - WORDPRESS_VER=4 NGINX_VER=1.14 TAG=4-1.14 EXTRA_TAG=4
-    - WORDPRESS_VER=4 NGINX_VER=1.13 TAG=4-1.13
+    - WORDPRESS_VER=4 NGINX_VER=1.15 TAGS=4-1.15,1.15,1,4,latest
+    - WORDPRESS_VER=4 NGINX_VER=1.14 TAGS=4-1.14,1.14
+    - WORDPRESS_VER=4 NGINX_VER=1.13 TAGS=4-1.13,1.13
 
 script:
   - make && make test
