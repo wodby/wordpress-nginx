@@ -7,7 +7,7 @@
 
 ## Docker Images
 
-!!! For better reliability we release images with stability tags (`wodby/wordpress-nginx:4-1.14-X.X.X`) which correspond to [git tags](https://github.com/wodby/wordpress-nginx/releases). We **STRONGLY RECOMMEND** using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/wordpress-nginx:4-1.14-X.X.X`) which correspond to [git tags](https://github.com/wodby/wordpress-nginx/releases). We strongly recommend using images only with stability tags. 
 
 Overview:
 
@@ -18,10 +18,11 @@ Overview:
 
 [_(Dockerfile)_]: https://github.com/wodby/wordpress-nginx/tree/master/Dockerfile
 
-| Supported tags and respective `Dockerfile` links | WordPress | Nginx |
-| ------------------------------------------------ | --------- | ----- |
-| `4-1.14`, `4`, `latest` [_(Dockerfile)_]         | 4         | 1.14  |
-| `4-1.13` [_(Dockerfile)_]                        | 4         | 1.13  |
+| Supported tags and respective `Dockerfile` links      | WordPress | Nginx |
+| ----------------------------------------------------- | --------- | ----- |
+| `4-1.15`, `1.15`, `1`, `4`, `latest` [_(Dockerfile)_] | 4         | 1.15  |
+| `4-1.14`, `1.14`, `latest` [_(Dockerfile)_]           | 4         | 1.14  |
+| `4-1.13`, `1.13` [_(Dockerfile)_]                     | 4         | 1.13  |
 
 ## Environment Variables
 

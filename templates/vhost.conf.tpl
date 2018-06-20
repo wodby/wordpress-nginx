@@ -19,6 +19,7 @@ server {
 
     include fastcgi.conf;
     include healthz.conf;
+    include pagespeed.conf;
 
     location ~* ^/.well-known/ {
         allow all;
