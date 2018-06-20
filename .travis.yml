@@ -5,8 +5,7 @@ services:
 
 env:
   global:
-    - LATEST_TAG=4-1.14
-    - BASE_IMAGE_STABILITY_TAG=4.1.0
+    - BASE_IMAGE_STABILITY_TAG=4.2.0
   matrix:
     - WORDPRESS_VER=4 NGINX_VER=1.15 TAGS=4-1.15,1.15,1,4,latest
     - WORDPRESS_VER=4 NGINX_VER=1.14 TAGS=4-1.14,1.14
